@@ -1,6 +1,7 @@
 import 'package:covid_19/model/world_states_model.dart';
 import 'package:covid_19/services/states_services.dart';
 import 'package:covid_19/view/countries_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -35,7 +36,6 @@ class _WorldStatesScreenState extends State<WorldStatesScreen>
     // StatesServices CLASS KA OBJECT
     StatesServices statesServices = StatesServices();
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),

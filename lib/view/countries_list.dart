@@ -1,4 +1,5 @@
 import 'package:covid_19/services/states_services.dart';
+import 'package:covid_19/view/detail_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -87,21 +88,47 @@ class _CountriesListState extends State<CountriesList> {
                       itemBuilder: (context, index) {
                         String name = snapshot.data![index]['country'];
                         if (searchController.text.isEmpty) {
-                          Column(
+                          return Column(
                             children: [
-                              ListTile(
-                                title: Text(
-                                  snapshot.data![index]['country'].toString(),
-                                ),
-                                subtitle: Text(
-                                  snapshot.data![index]['cases'].toString(),
-                                ),
-                                leading: Image(
-                                  height: 50,
-                                  width: 50,
-                                  image: NetworkImage(
-                                    snapshot
-                                        .data![index]['countryInfo']['flag'],
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(
+                                        name: snapshot.data![index]['country'],
+                                        image: snapshot
+                                            .data![index]['countryInfo']['flag'],
+                                        totalCases:
+                                            snapshot.data![index]['cases'],
+                                        totalDeaths:
+                                            snapshot.data![index]['deaths'],
+                                        totalRecovered:
+                                            snapshot.data![index]['recovered'],
+                                        active: snapshot.data![index]['active'],
+                                        critical:
+                                            snapshot.data![index]['critical'],
+                                        todayRecovered: snapshot
+                                            .data![index]['todayRecovered'],
+                                        test: snapshot.data![index]['tests'],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: ListTile(
+                                  title: Text(
+                                    snapshot.data![index]['country'].toString(),
+                                  ),
+                                  subtitle: Text(
+                                    snapshot.data![index]['cases'].toString(),
+                                  ),
+                                  leading: Image(
+                                    height: 50,
+                                    width: 50,
+                                    image: NetworkImage(
+                                      snapshot
+                                          .data![index]['countryInfo']['flag'],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -110,21 +137,76 @@ class _CountriesListState extends State<CountriesList> {
                         } else if (name.toLowerCase().contains(
                           searchController.text.toLowerCase(),
                         )) {
-                          Column(
+                          return Column(
                             children: [
-                              ListTile(
-                                title: Text(
-                                  snapshot.data![index]['country'].toString(),
-                                ),
-                                subtitle: Text(
-                                  snapshot.data![index]['cases'].toString(),
-                                ),
-                                leading: Image(
-                                  height: 50,
-                                  width: 50,
-                                  image: NetworkImage(
-                                    snapshot
-                                        .data![index]['countryInfo']['flag'],
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(
+                                        name: snapshot.data![index]['country'],
+                                        image: snapshot
+                                            .data![index]['countryInfo']['flag'],
+                                        totalCases:
+                                            snapshot.data![index]['cases'],
+                                        totalDeaths:
+                                            snapshot.data![index]['deaths'],
+                                        totalRecovered:
+                                            snapshot.data![index]['recovered'],
+                                        active: snapshot.data![index]['active'],
+                                        critical:
+                                            snapshot.data![index]['critical'],
+                                        todayRecovered: snapshot
+                                            .data![index]['todayRecovered'],
+                                        test: snapshot.data![index]['tests'],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailScreen(
+                                          name:
+                                              snapshot.data![index]['country'],
+                                          image: snapshot
+                                              .data![index]['countryInfo']['flag'],
+                                          totalCases:
+                                              snapshot.data![index]['cases'],
+                                          totalDeaths:
+                                              snapshot.data![index]['deaths'],
+                                          totalRecovered: snapshot
+                                              .data![index]['recovered'],
+                                          active:
+                                              snapshot.data![index]['active'],
+                                          critical:
+                                              snapshot.data![index]['critical'],
+                                          todayRecovered: snapshot
+                                              .data![index]['todayRecovered'],
+                                          test: snapshot.data![index]['tests'],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: ListTile(
+                                    title: Text(
+                                      snapshot.data![index]['country']
+                                          .toString(),
+                                    ),
+                                    subtitle: Text(
+                                      snapshot.data![index]['cases'].toString(),
+                                    ),
+                                    leading: Image(
+                                      height: 50,
+                                      width: 50,
+                                      image: NetworkImage(
+                                        snapshot
+                                            .data![index]['countryInfo']['flag'],
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -133,25 +215,6 @@ class _CountriesListState extends State<CountriesList> {
                         } else {
                           return Container();
                         }
-                        return Column(
-                          children: [
-                            ListTile(
-                              title: Text(
-                                snapshot.data![index]['country'].toString(),
-                              ),
-                              subtitle: Text(
-                                snapshot.data![index]['cases'].toString(),
-                              ),
-                              leading: Image(
-                                height: 50,
-                                width: 50,
-                                image: NetworkImage(
-                                  snapshot.data![index]['countryInfo']['flag'],
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
                       },
                     );
                   }
