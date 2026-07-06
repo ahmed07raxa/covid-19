@@ -35,6 +35,7 @@ class _WorldStatesScreenState extends State<WorldStatesScreen>
     // StatesServices CLASS KA OBJECT
     StatesServices statesServices = StatesServices();
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),

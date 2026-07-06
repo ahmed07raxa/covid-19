@@ -1,4 +1,4 @@
-import 'package:covid_19/view/world_states_screen.dart';
+import 'package:covid_19/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: WorldStatesScreen(),
+      home: SplashScreen(),
     );
   }
 }
